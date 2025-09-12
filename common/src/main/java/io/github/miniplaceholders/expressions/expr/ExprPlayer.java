@@ -8,13 +8,14 @@ import io.github.miniplaceholders.expressions.Platform;
 import io.github.miniplaceholders.expressions.Utils;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.Context;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.ArgumentQueue;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
+
+import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
 public final class ExprPlayer implements Expression {
     private final Platform platform;
@@ -44,10 +45,10 @@ public final class ExprPlayer implements Expression {
         } catch (IllegalArgumentException exception) {
             audience = platform.getPlayerByName(player).orElse(null);
         }
-        final TagResolver placeholders = audience == null
-                ? MiniPlaceholders.getGlobalPlaceholders()
-                : MiniPlaceholders.getAudienceGlobalPlaceholders(audience);
+        final TagResolver placeholders = MiniPlaceholders.audienceGlobalPlaceholders();
 
-        return Tag.inserting(MiniMessage.miniMessage().deserialize(text, placeholders));
+        return Tag.inserting(audience != null
+                ? miniMessage().deserialize(text, audience, placeholders)
+                : miniMessage().deserialize(text, placeholders));
     }
 }

@@ -2,7 +2,6 @@ package io.github.miniplaceholders.expressions;
 
 import io.github.miniplaceholders.api.Expansion;
 import io.github.miniplaceholders.expressions.expr.*;
-import me.sliman4.expressions.expr.*;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
