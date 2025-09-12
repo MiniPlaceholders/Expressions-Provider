@@ -1,4 +1,4 @@
-import me.sliman4.expressions.Platform;
+import io.github.miniplaceholders.expressions.Platform;
 import net.kyori.adventure.audience.Audience;
 
 import java.util.Optional;

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "miniplaceholders-expressions-expansion",
+  "id": "expressions-fabric",
   "version": "${version}",
-  "name": "MiniPlaceholders-Expressions-Expansion",
+  "name": "Expressions-Fabric",
   "authors": [
     "4drian3d"
   ],
@@ -15,13 +15,13 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "me.sliman4.expressions.fabric.FabricMod"
+      "io.github.miniplaceholders.expressions.fabric.FabricMod"
     ]
   },
   "depends": {
     "fabricloader": ">=0.14.19",
     "fabric": "*",
-    "java": ">=17",
+    "java": ">=21",
     "minecraft": ">1.20",
     "miniplaceholders": "*"
   }

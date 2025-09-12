@@ -1,6 +1,6 @@
 import io.github.miniplaceholders.api.MiniPlaceholders;
-import me.sliman4.expressions.Configuration;
-import me.sliman4.expressions.Expressions;
+import io.github.miniplaceholders.expressions.Configuration;
+import io.github.miniplaceholders.expressions.Expressions;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;

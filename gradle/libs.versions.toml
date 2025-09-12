@@ -1,28 +1,27 @@
 [versions]
-adventure = "4.15.0"
+adventure = "4.24.0"
 junit = "5.10.2"
-krypton = "0.60.3"
 blossom = "2.1.0"
-shadow = "8.1.1"
+shadow = "9.1.0"
 fabric-loader = "0.15.6"
-fabric-api = "0.95.5+1.20.5"
-minecraft = "1.19.4"
-adventurefabric = "5.11.0"
+fabric-api = "0.133.4+1.21.8"
+minecraft = "1.21.8"
+adventurefabric = "6.6.0"
 
 [libraries.miniplaceholders]
 group = "io.github.miniplaceholders"
 name = "miniplaceholders-api"
-version = "2.2.3"
+version = "3.0.1"
 
 [libraries.velocity-api]
 group = "com.velocitypowered"
 name = "velocity-api"
-version = "3.2.0-SNAPSHOT"
+version = "3.4.0-SNAPSHOT"
 
 [libraries.paper-api]
 group = "io.papermc.paper"
 name = "paper-api"
-version = "1.18.2-R0.1-SNAPSHOT"
+version = "1.21.8-R0.1-SNAPSHOT"
 
 [libraries.adventure-minimessage]
 group = "net.kyori"
@@ -49,16 +48,6 @@ group = "org.junit.jupiter"
 name = "junit-jupiter-engine"
 version = { ref = "junit" }
 
-[libraries.krypton-api]
-group = "org.kryptonmc"
-name = "krypton-api"
-version = { ref = "krypton" }
-
-[libraries.krypton-annotation-processor]
-group = "org.kryptonmc"
-name = "krypton-annotation-processor"
-version = { ref = "krypton" }
-
 [libraries.fabric-loader]
 group = "net.fabricmc"
 name = "fabric-loader"
@@ -83,7 +72,7 @@ version = { ref = "adventurefabric" }
 minimessage = ["adventure-minimessage", "adventure-serializer-plain"]
 
 [plugins]
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
-runpaper = { id = "xyz.jpenilla.run-paper", version = "2.2.3" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 blossom = { id = "net.kyori.blossom", version.ref = "blossom" }
-idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.1.7" }
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.3" }

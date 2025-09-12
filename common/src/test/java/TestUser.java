@@ -1,6 +1,4 @@
-import io.github.miniplaceholders.api.MiniPlaceholders;
-import me.sliman4.expressions.Configuration;
-import me.sliman4.expressions.Expressions;
+import io.github.miniplaceholders.expressions.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

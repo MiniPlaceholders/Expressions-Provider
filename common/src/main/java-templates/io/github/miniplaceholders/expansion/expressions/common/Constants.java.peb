@@ -1,7 +1,0 @@
-package io.github.miniplaceholders.expansion.expressions;
-
-public final class Constants {
-    private Constants() {}
-
-    public static final String VERSION = "{{ version }}";
-}

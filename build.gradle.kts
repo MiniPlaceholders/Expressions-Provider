@@ -5,11 +5,11 @@ plugins {
 
 allprojects {
     apply<JavaPlugin>()
-    java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
     tasks.withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
-        options.release.set(17)
+        options.release.set(21)
     }
 }
 
@@ -18,11 +18,12 @@ dependencies {
     implementation(projects.expressionsVelocity)
     implementation(projects.expressionsPaper)
     implementation(projects.expressionsSponge)
+    implementation(projects.expressionsFabric)
 }
 
 tasks {
     shadowJar {
-        archiveFileName.set("MiniPlaceholders-Expressions-Expansion-${project.version}.jar")
+        archiveFileName.set("Expressions-${project.version}.jar")
         archiveClassifier.set("")
         doLast {
             copy {
