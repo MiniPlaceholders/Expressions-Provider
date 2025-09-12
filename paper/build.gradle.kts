@@ -3,9 +3,8 @@ plugins {
 }
 
 dependencies {
-    compileOnly(projects.expressionsCommon)
+    implementation(projects.expressionsCommon)
     compileOnly(libs.paper.api)
-    compileOnly(libs.miniplaceholders)
 }
 
 tasks {

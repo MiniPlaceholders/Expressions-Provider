@@ -2,12 +2,11 @@
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "expressions-parent"
+rootProject.name = "expressions-provider"
 
 dependencyResolutionManagement {
     repositories {
         maven("https://repo.papermc.io/repository/maven-public/")
-       // maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 }

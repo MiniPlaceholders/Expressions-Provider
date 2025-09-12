@@ -26,8 +26,8 @@ tasks {
     }
     remapJar {
         inputFile.set(shadowJar.get().archiveFile)
-        archiveFileName.set("Expressions-Fabric-${project.version}.jar")
-        destinationDirectory.set(file("${rootProject.projectDir}/build"))
+//        archiveFileName.set("Expressions-Provider-Fabric-${project.version}.jar")
+//        destinationDirectory.set(file("${rootProject.projectDir}/build"))
     }
     shadowJar {
         configurations = listOf(shade)

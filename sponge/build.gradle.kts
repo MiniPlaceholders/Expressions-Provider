@@ -3,10 +3,11 @@ import org.spongepowered.plugin.metadata.model.PluginDependency
 
 plugins {
     id("org.spongepowered.gradle.plugin")
+    alias(libs.plugins.shadow)
 }
 
 dependencies {
-    compileOnly(projects.expressionsCommon)
+    implementation(projects.expressionsCommon)
     compileOnly(libs.miniplaceholders)
 }
 
@@ -17,9 +18,9 @@ sponge {
         name(PluginLoaders.JAVA_PLAIN)
         version("1.0")
     }
-    plugin("miniplaceholders-expressions-expansion") {
-        displayName("MiniPlaceholders-Expressions-Expansion")
-        entrypoint("io.github.miniplaceholders.expansion.expressions.sponge.SpongePlugin")
+    plugin("expressions-provider") {
+        displayName("Expressions-Provider")
+        entrypoint("io.github.miniplaceholders.expressions.sponge.SpongePlugin")
         description(project.description)
         links {
             homepage("https://github.com/MiniPlaceholders/Expressions-Expansion")
@@ -32,6 +33,11 @@ sponge {
         dependency("spongeapi") {
             loadOrder(PluginDependency.LoadOrder.AFTER)
             optional(false)
+        }
+        dependency("miniplaceholders") {
+            loadOrder(PluginDependency.LoadOrder.AFTER)
+            optional(false)
+            version("3.0.0")
         }
     }
 }

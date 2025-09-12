@@ -1,6 +1,6 @@
 package io.github.miniplaceholders.expressions.sponge;
 
-import io.github.miniplaceholders.expressions.Platform;
+import io.github.miniplaceholders.expressions.common.Platform;
 import net.kyori.adventure.audience.Audience;
 import org.spongepowered.api.Server;
 

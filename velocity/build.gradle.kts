@@ -1,5 +1,5 @@
 dependencies {
-    compileOnly(projects.expressionsCommon)
+    implementation(projects.expressionsCommon)
     compileOnly(libs.velocity.api)
     compileOnly(libs.miniplaceholders)
     annotationProcessor(libs.velocity.api)

@@ -1,7 +1,7 @@
 package io.github.miniplaceholders.expressions.sponge;
 
 import com.google.inject.Inject;
-import io.github.miniplaceholders.expressions.Expressions;
+import io.github.miniplaceholders.expressions.common.Expressions;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.config.ConfigDir;
@@ -11,7 +11,7 @@ import org.spongepowered.plugin.builtin.jvm.Plugin;
 
 import java.nio.file.Path;
 
-@Plugin("miniplaceholders-expressions-expansion")
+@Plugin("expressions-provider")
 public class SpongePlugin {
     @Inject
     private Logger logger;
@@ -21,7 +21,7 @@ public class SpongePlugin {
 
     @Listener
     public void onServerStart(StartedEngineEvent<Server> event) {
-        logger.info("Starting Expressions Expansion for Sponge");
+        logger.info("Starting Expressions Provider");
         final Server server = event.engine();
 
         Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), new SpongePlatform(server));

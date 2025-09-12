@@ -1,7 +1,7 @@
 package io.github.miniplaceholders.expressions.velocity;
 
 import com.velocitypowered.api.proxy.ProxyServer;
-import io.github.miniplaceholders.expressions.Platform;
+import io.github.miniplaceholders.expressions.common.Platform;
 import net.kyori.adventure.audience.Audience;
 
 import java.util.Optional;

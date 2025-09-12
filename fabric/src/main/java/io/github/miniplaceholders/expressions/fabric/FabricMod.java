@@ -1,6 +1,6 @@
 package io.github.miniplaceholders.expressions.fabric;
 
-import io.github.miniplaceholders.expressions.Expressions;
+import io.github.miniplaceholders.expressions.common.Expressions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.loader.api.FabricLoader;

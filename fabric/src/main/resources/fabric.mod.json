@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "expressions-fabric",
+  "id": "expressions-provider",
   "version": "${version}",
-  "name": "Expressions-Fabric",
+  "name": "Expressions-Provider",
   "authors": [
     "4drian3d"
   ],

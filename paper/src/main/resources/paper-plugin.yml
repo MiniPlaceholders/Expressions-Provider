@@ -1,4 +1,4 @@
-name: MiniPlaceholders-Expressions-Expansion
+name: Expressions-Provider
 version: '${version}'
 authors:
   - 4drian3d

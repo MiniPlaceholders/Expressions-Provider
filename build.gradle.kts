@@ -1,39 +1,46 @@
+import com.github.jengelman.gradle.plugins.shadow.ShadowPlugin
+import org.gradle.internal.extensions.stdlib.capitalized
+
 plugins {
     java
     alias(libs.plugins.shadow)
 }
 
-allprojects {
+tasks {
+    clean {
+        delete("jar")
+    }
+}
+
+subprojects {
     apply<JavaPlugin>()
+    apply<ShadowPlugin>()
     java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
-    tasks.withType<JavaCompile> {
-        options.encoding = Charsets.UTF_8.name()
-        options.release.set(21)
-    }
-}
+    tasks {
+        withType<JavaCompile> {
+            options.encoding = Charsets.UTF_8.name()
+            options.release.set(21)
+        }
+        if (!project.name.contains("common")) {
+            build {
+                dependsOn(shadowJar)
+            }
+            shadowJar {
+                val jarName = project.name
+                    .replace("expressions-", "")
+                    .capitalized()
+                archiveFileName.set("ExpressionsProvider-$jarName-${project.version}.jar")
+                archiveClassifier.set("")
 
-dependencies {
-    implementation(projects.expressionsCommon)
-    implementation(projects.expressionsVelocity)
-    implementation(projects.expressionsPaper)
-    implementation(projects.expressionsSponge)
-    implementation(projects.expressionsFabric)
-}
-
-tasks {
-    shadowJar {
-        archiveFileName.set("Expressions-${project.version}.jar")
-        archiveClassifier.set("")
-        doLast {
-            copy {
-                from(archiveFile)
-                into("${rootProject.projectDir}/build")
+                doLast {
+                    copy {
+                        from(archiveFile)
+                        into("${rootProject.projectDir}/jar")
+                    }
+                }
+                duplicatesStrategy = DuplicatesStrategy.EXCLUDE
             }
         }
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    }
-    build {
-        dependsOn(shadowJar)
     }
 }

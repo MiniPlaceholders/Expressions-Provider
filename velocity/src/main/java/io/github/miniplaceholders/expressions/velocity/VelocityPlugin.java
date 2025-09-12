@@ -8,9 +8,9 @@ import com.velocitypowered.api.plugin.Dependency;
 
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
-import io.github.miniplaceholders.expressions.Constants;
-import io.github.miniplaceholders.expressions.Expressions;
-import io.github.miniplaceholders.expressions.Platform;
+import io.github.miniplaceholders.expressions.common.Constants;
+import io.github.miniplaceholders.expressions.common.Expressions;
+import io.github.miniplaceholders.expressions.common.Platform;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -38,7 +38,7 @@ public final class VelocityPlugin {
 
     @Subscribe
     public void onProxyInitialize(ProxyInitializeEvent event) {
-        logger.info("Starting Expressions Expansion for Velocity");
+        logger.info("Starting Expressions Provider");
 
         Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
     }
