@@ -18,7 +18,7 @@ sponge {
         name(PluginLoaders.JAVA_PLAIN)
         version("1.0")
     }
-    plugin("expressions-provider") {
+    plugin("expressionsprovider") {
         displayName("Expressions-Provider")
         entrypoint("io.github.miniplaceholders.expressions.sponge.SpongePlugin")
         description(project.description)

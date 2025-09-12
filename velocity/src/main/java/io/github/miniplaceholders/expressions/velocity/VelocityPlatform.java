@@ -6,21 +6,17 @@ import net.kyori.adventure.audience.Audience;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 
-public class VelocityPlatform implements Platform {
-    private final ProxyServer server;
-
-    public VelocityPlatform(final ProxyServer server) {
-        this.server = server;
-    }
+public record VelocityPlatform(ProxyServer server) implements Platform {
 
     @Override
     public Optional<Audience> getPlayerByUniqueId(UUID uuid) {
-        return server.getPlayer(uuid).map(player -> player);
+        return server.getPlayer(uuid).map(Function.identity());
     }
 
     @Override
-    public Optional<Audience> getPlayerByName(String name) {
-        return server.getPlayer(name).map(player -> player);
+    public Optional<? extends Audience> getPlayerByName(String name) {
+        return server.getPlayer(name);
     }
 }

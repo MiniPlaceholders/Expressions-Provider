@@ -7,20 +7,15 @@ import net.minecraft.server.MinecraftServer;
 import java.util.Optional;
 import java.util.UUID;
 
-final class FabricPlatform implements Platform {
-    private final MinecraftServer server;
-
-    FabricPlatform(MinecraftServer server) {
-        this.server = server;
-    }
+record FabricPlatform(MinecraftServer server) implements Platform {
 
     @Override
-    public Optional<Audience> getPlayerByUniqueId(UUID uuid) {
+    public Optional<Audience> getPlayerByUniqueId(final UUID uuid) {
         return Optional.ofNullable(server.getPlayerList().getPlayer(uuid));
     }
 
     @Override
-    public Optional<Audience> getPlayerByName(String name) {
+    public Optional<Audience> getPlayerByName(final String name) {
         return Optional.ofNullable(server.getPlayerList().getPlayerByName(name));
     }
 }

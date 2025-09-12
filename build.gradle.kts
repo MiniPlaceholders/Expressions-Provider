@@ -22,7 +22,8 @@ subprojects {
             options.encoding = Charsets.UTF_8.name()
             options.release.set(21)
         }
-        if (!project.name.contains("common")) {
+        val external = listOf("common", "fabric")
+        if (!external.any { project.name.contains(it) }) {
             build {
                 dependsOn(shadowJar)
             }

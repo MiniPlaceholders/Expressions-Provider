@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "expressions-provider",
+  "id": "expressionsprovider",
   "version": "${version}",
-  "name": "Expressions-Provider",
+  "name": "ExpressionsProvider",
   "authors": [
     "4drian3d"
   ],
@@ -14,7 +14,7 @@
   "license": "GPL",
   "environment": "server",
   "entrypoints": {
-    "main": [
+    "server": [
       "io.github.miniplaceholders.expressions.fabric.FabricMod"
     ]
   },
@@ -22,7 +22,7 @@
     "fabricloader": ">=0.14.19",
     "fabric": "*",
     "java": ">=21",
-    "minecraft": ">1.20",
-    "miniplaceholders": "*"
+    "minecraft": ">1.21",
+    "miniplaceholders": ">3.0.0"
   }
 }

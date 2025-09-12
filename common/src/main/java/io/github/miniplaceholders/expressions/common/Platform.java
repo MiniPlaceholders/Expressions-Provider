@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface Platform {
     Optional<Audience> getPlayerByUniqueId(UUID uuid);
-    Optional<Audience> getPlayerByName(String name);
+    Optional<? extends Audience> getPlayerByName(String name);
 }

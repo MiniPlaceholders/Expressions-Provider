@@ -41,7 +41,7 @@ public final class ExprPlayer implements Expression {
         Audience audience;
         try {
             UUID uuid = UUID.fromString(player);
-            audience = platform.getPlayerByUniqueId(uuid).orElseGet(() -> platform.getPlayerByName(player).orElse(null));
+            audience = platform.getPlayerByUniqueId(uuid).or(() -> platform.getPlayerByName(player)).orElse(null);
         } catch (IllegalArgumentException exception) {
             audience = platform.getPlayerByName(player).orElse(null);
         }

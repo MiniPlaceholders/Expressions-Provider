@@ -1,25 +1,32 @@
 package io.github.miniplaceholders.expressions.fabric;
 
 import io.github.miniplaceholders.expressions.common.Expressions;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
-public class FabricMod implements ModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("expressions-expansion");
+import static net.kyori.adventure.text.Component.text;
+
+public final class FabricMod implements DedicatedServerModInitializer {
+    public static final ComponentLogger LOGGER = ComponentLogger.logger("expressions-provider");
 
     @Override
-    public void onInitialize() {
-        LOGGER.info("Starting Expressions Expansion for Fabric");
-
+    public void onInitializeServer() {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
+            LOGGER.info(text("Starting Expressions Provider...", NamedTextColor.GREEN));
             final FabricPlatform platform = new FabricPlatform(server);
             final Path dataFolder = FabricLoader.getInstance().getConfigDir().resolve("Expressions-Expansion");
-            Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+            try {
+                Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+                LOGGER.info(text("Correctly started Expressions Provider", NamedTextColor.GREEN));
+            } catch (IOException e) {
+                LOGGER.info(text("An error occurred while loading expressions", NamedTextColor.RED));
+            }
         });
     }
 }

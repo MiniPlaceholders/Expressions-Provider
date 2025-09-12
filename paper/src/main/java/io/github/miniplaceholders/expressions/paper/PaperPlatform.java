@@ -9,12 +9,12 @@ import java.util.UUID;
 
 public class PaperPlatform implements Platform {
     @Override
-    public Optional<Audience> getPlayerByUniqueId(UUID uuid) {
+    public Optional<Audience> getPlayerByUniqueId(final UUID uuid) {
         return Optional.ofNullable(Bukkit.getPlayer(uuid));
     }
 
     @Override
-    public Optional<Audience> getPlayerByName(String name) {
+    public Optional<Audience> getPlayerByName(final String name) {
         return Optional.ofNullable(Bukkit.getPlayer(name));
     }
 }

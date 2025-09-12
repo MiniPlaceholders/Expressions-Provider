@@ -15,7 +15,7 @@ public record SpongePlatform(Server server) implements Platform {
     }
 
     @Override
-    public Optional<Audience> getPlayerByName(String name) {
-        return server.player(name).map(Function.identity());
+    public Optional<? extends Audience> getPlayerByName(String name) {
+        return server.player(name);
     }
 }

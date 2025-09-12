@@ -9,6 +9,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.lifecycle.StartedEngineEvent;
 import org.spongepowered.plugin.builtin.jvm.Plugin;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 @Plugin("expressions-provider")
@@ -20,10 +21,15 @@ public class SpongePlugin {
     private Path dataFolder;
 
     @Listener
-    public void onServerStart(StartedEngineEvent<Server> event) {
-        logger.info("Starting Expressions Provider");
+    public void onServerStart(final StartedEngineEvent<Server> event) {
+        logger.info("Starting Expressions Provider...");
         final Server server = event.engine();
 
-        Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), new SpongePlatform(server));
+        try {
+            Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), new SpongePlatform(server));
+            logger.info("Correctly started Expressions Provider");
+        } catch (IOException e) {
+            logger.info("An error occurred while loading expressions", e);
+        }
     }
 }

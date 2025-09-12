@@ -3,21 +3,24 @@ package io.github.miniplaceholders.expressions.velocity;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
-import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.Dependency;
-
+import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import io.github.miniplaceholders.expressions.common.Constants;
 import io.github.miniplaceholders.expressions.common.Expressions;
 import io.github.miniplaceholders.expressions.common.Platform;
-import org.slf4j.Logger;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
+import static net.kyori.adventure.text.Component.text;
+
 @Plugin(
-        name = "MiniPlaceholders Expressions Expansion",
-        id = "miniplaceholders-expressions-expansion",
+        name = "ExpressionsProvider",
+        id = "expressionsprovider",
         version = Constants.VERSION,
         authors = {"Sliman4", "4drian3d"},
         dependencies = {
@@ -25,12 +28,16 @@ import java.nio.file.Path;
         }
 )
 public final class VelocityPlugin {
-    private final Logger logger;
+    private final ComponentLogger logger;
     private final Path dataFolder;
     private final Platform platform;
 
     @Inject
-    public VelocityPlugin(Logger logger, ProxyServer server, @DataDirectory final Path dataFolder) {
+    public VelocityPlugin(
+            final ComponentLogger logger,
+            final ProxyServer server,
+            @DataDirectory final Path dataFolder
+    ) {
         this.logger = logger;
         this.dataFolder = dataFolder;
         this.platform = new VelocityPlatform(server);
@@ -38,8 +45,13 @@ public final class VelocityPlugin {
 
     @Subscribe
     public void onProxyInitialize(ProxyInitializeEvent event) {
-        logger.info("Starting Expressions Provider");
+        logger.info(text("Starting Expressions Provider...", NamedTextColor.GREEN));
 
-        Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+        try {
+            Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+            logger.info(text("Correctly started Expressions Provider", NamedTextColor.GREEN));
+        } catch (IOException e) {
+            logger.info(text("An error occurred while loading expressions", NamedTextColor.RED), e);
+        }
     }
 }

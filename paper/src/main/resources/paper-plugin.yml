@@ -1,10 +1,10 @@
-name: Expressions-Provider
+name: ExpressionsProvider
 version: '${version}'
 authors:
   - 4drian3d
   - Sliman4
 main: io.github.miniplaceholders.expressions.paper.PaperPlugin
-description: Expressions Expansion for MiniPlaceholders
+description: Expressions Provider
 api-version: '1.21'
 folia-supported: true
 dependencies:
