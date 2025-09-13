@@ -1,5 +1,9 @@
-# Expressions-Expansion
-Expressions Expansion for MiniPlaceholders.
+# Expressions-Provider
+Add MiniPlaceholders placeholders for complex mathematical and text expressions.
+
+## Installation
+- Install MiniPlaceholders
+- Install this project in the mods or plugins folder, depending on the platform you use
 
 ## Placeholders
 ### Basic Operations
