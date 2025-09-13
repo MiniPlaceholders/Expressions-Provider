@@ -1,6 +1,6 @@
 [versions]
 adventure = "4.24.0"
-junit = "5.10.2"
+junit = "5.13.4"
 blossom = "2.1.0"
 shadow = "9.1.0"
 fabric-loader = "0.15.6"
