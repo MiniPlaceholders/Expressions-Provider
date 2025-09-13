@@ -13,8 +13,8 @@ dependencies {
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
     modImplementation(libs.adventure.platform.fabric)
-    modImplementation(libs.snakeyaml)
-    include(libs.snakeyaml)
+//    modImplementation(libs.snakeyaml)
+//    include(libs.snakeyaml)
 }
 
 tasks {

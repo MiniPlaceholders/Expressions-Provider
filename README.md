@@ -56,18 +56,19 @@ Expressions Expansion for MiniPlaceholders.
 - **Expand to a [User expression](#User-expressions)** | `<expr_user:name:arg1:arg2:...:argX>`
 
 ## User expressions
-You can create your own expression shortcut in config.yml using our Expression Expansion Language (EEL):
+You can create your own expression shortcut in expressions.properties using our Expression Provider Language (EPL):
 
-`add_and_multiply: "<expr_add:'<arg1>':'<expr_mul:\\'<arg2>\\':\\'<arg3>\\'>'>"` means `<expr_user:add_and_multiply:arg1:arg2:arg3>` will be evaluated to `arg1 + (arg2 * arg3)`. So, `<expr_user:add_and_multiply:2:3:4>` evaluates to `<expr_add:2:'<expr_mul:3:4>'>`, which is `2 + (3 * 4) = 14`
+`add_and_multiply=<expr_add:"<arg1>":"<expr_mul:'<arg2>':'<arg3>'>">` means `<expr_user:add_and_multiply:arg1:arg2:arg3>` will be evaluated to `arg1 + (arg2 * arg3)`.
+So, `<expr_user:add_and_multiply:2:3:4>` evaluates to `<expr_add:2:'<expr_mul:3:4>'>`, which is `2 + (3 * 4) = 14`
 
 ### Example user expressions
-- `<expr_user:remove_first:s:n>` - Remove `n` first characters from `s` (`hello`, `2` -> `llo`), EEL: `  remove_first: "<expr_substring:'<arg1>':'<arg2>':'<expr_length:\\'<arg1>\\'>'>"`
-- `<expr_user:remove_last:s:n>` - Remove `n` last characters from `s` (`hello`, `2` -> `hel`), EEL: `remove_last: "<expr_substring:'<arg1>':0:'<expr_sub:\\'<expr_length:\\\\\\'<arg1>\\\\\\'>\\':\\'<arg2>\\'>'>"`
-- `<expr_user:decimals:n:decimals>` - format a number (`1.234567`, `2` -> `1.23`), EEL: `decimals: "<expr_format:'<expr_concat:\\'%.0\\':\\'<arg2>\\':\\'f\\'>':'<arg1>'>"`
-- `<expr_user:pad_integer:n:length>` - pad an integer with zeros (`12`, `3` -> `012`), EEL: `pad_integer: "<expr_format:'<expr_concat:\\'%0\\':\\'<arg1>\\':\\'d\\'>':'<arg2>'>"`
+- `<expr_user:remove_first:s:n>` - Remove `n` first characters from `s` (`hello`, `2` -> `llo`), EPL: `remove_first=<expr_substring:"<arg1>":"<arg2>":"<expr_length:'<arg1>'>">`
+- `<expr_user:remove_last:s:n>` - Remove `n` last characters from `s` (`hello`, `2` -> `hel`), EPL: `remove_last=<expr_substring:"<arg1>":0:"<expr_sub:'<expr_length:"<arg1>">':'<arg2>'>">`
+- `<expr_user:decimals:n:decimals>` - format a number (`1.234567`, `2` -> `1.23`), EPL: `decimals=<expr_format:"<expr_concat:'%.0':'<arg2>':'f'>":"<arg1>">`
+- `<expr_user:pad_integer:n:length>` - pad an integer with zeros (`12`, `3` -> `012`), EPL: `pad_integer=<expr_format:"<expr_concat:'%0':'<arg1>':'d'>":"<arg2>">`
 
 ## Nesting
-Expressions can be nested. Try `/miniplaceholders parse me "<expr_add:1:'<expr_add:1:\\'<expr_add:1:\\\\\\'<expr_add:1:\\\\\\\\\\\\\\'<expr_add:1:0>\\\\\\\\\\\\\\'>\\\\\\'>\\'>'>"`
+Expressions can be nested. Try `/miniplaceholders parse me <expr_add:1:"<expr_add:1:'<expr_add:1:"<expr_add:1:'<expr_add:1:0>'>">'>">`
 
 ## Downloads
 [![](https://raw.githubusercontent.com/Prospector/badges/master/modrinth-badge-72h-padded.png)](https://modrinth.com/plugin/expressions-expansion)

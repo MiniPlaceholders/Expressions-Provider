@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 
+import static io.github.miniplaceholders.expressions.common.Expressions.EXPRESSIONS_FILE;
 import static net.kyori.adventure.text.Component.text;
 
 public final class PaperPlugin extends JavaPlugin {
@@ -17,7 +18,11 @@ public final class PaperPlugin extends JavaPlugin {
         logger.info(text("Starting Expressions Provider...", NamedTextColor.GREEN));
 
         try {
-            Expressions.initialize(getDataFolder().toPath(), getResource("config.yml"), new PaperPlatform());
+            Expressions.initialize(
+                    getDataFolder().toPath(),
+                    getResource(EXPRESSIONS_FILE),
+                    new PaperPlatform()
+            );
             logger.info(text("Correctly started Expressions Provider", NamedTextColor.GREEN));
         } catch (IOException e) {
             logger.info(text("An error occurred while loading expressions", NamedTextColor.RED), e);

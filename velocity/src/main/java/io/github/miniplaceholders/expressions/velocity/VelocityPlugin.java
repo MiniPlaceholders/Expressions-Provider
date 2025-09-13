@@ -16,6 +16,7 @@ import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import static io.github.miniplaceholders.expressions.common.Expressions.EXPRESSIONS_FILE;
 import static net.kyori.adventure.text.Component.text;
 
 @Plugin(
@@ -48,7 +49,11 @@ public final class VelocityPlugin {
         logger.info(text("Starting Expressions Provider...", NamedTextColor.GREEN));
 
         try {
-            Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+            Expressions.initialize(
+                    dataFolder,
+                    getClass().getClassLoader().getResourceAsStream(EXPRESSIONS_FILE),
+                    platform
+            );
             logger.info(text("Correctly started Expressions Provider", NamedTextColor.GREEN));
         } catch (IOException e) {
             logger.info(text("An error occurred while loading expressions", NamedTextColor.RED), e);

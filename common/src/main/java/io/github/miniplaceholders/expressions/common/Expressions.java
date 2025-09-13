@@ -2,16 +2,18 @@ package io.github.miniplaceholders.expressions.common;
 
 import io.github.miniplaceholders.api.Expansion;
 import io.github.miniplaceholders.expressions.common.expr.*;
-import org.yaml.snakeyaml.LoaderOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
-public class Expressions {
+public final class Expressions {
+    public static final String EXPRESSIONS_FILE = "expressions.properties";
     public static void initialize(
             final Path dataFolder,
             final InputStream configYml,
@@ -20,23 +22,23 @@ public class Expressions {
         if (Files.notExists(dataFolder)) {
             Files.createDirectory(dataFolder);
         }
-        final Path configFile = dataFolder.resolve("config.yml");
+        final Path configFile = dataFolder.resolve(EXPRESSIONS_FILE);
         try (configYml) {
             if (Files.notExists(configFile)) {
                 Files.copy(configYml, configFile);
             }
         }
-        final Yaml yaml = new Yaml(new Constructor(new LoaderOptions()) {
-            @Override
-            protected Class<?> getClassForName(String name) throws ClassNotFoundException {
-                if (name.equals(Configuration.class.getName())) {
-                    return Configuration.class;
-                }
-                return super.getClassForName(name);
-            }
-        });
-        final Configuration config = yaml.loadAs(Files.newInputStream(configFile), Configuration.class);
-        registerPlaceholders(config, platform);
+        try (final BufferedReader reader = Files.newBufferedReader(configFile)) {
+            Properties properties = new Properties();
+            properties.load(reader);
+            final Map<String, String> expressions = new HashMap<>();
+            properties.forEach((key, expression) ->
+                expressions.put(key.toString(), expression.toString())
+            );
+            registerPlaceholders(new Configuration(expressions), platform);
+        } catch (IOException e) {
+            throw new IOException("Unable to read expressions.properties from " + configFile + "file", e);
+        }
     }
 
     public static void registerPlaceholders(final Configuration config, final Platform platform) {

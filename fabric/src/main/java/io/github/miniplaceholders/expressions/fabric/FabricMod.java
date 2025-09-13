@@ -10,6 +10,7 @@ import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import static io.github.miniplaceholders.expressions.common.Expressions.EXPRESSIONS_FILE;
 import static net.kyori.adventure.text.Component.text;
 
 public final class FabricMod implements DedicatedServerModInitializer {
@@ -20,9 +21,13 @@ public final class FabricMod implements DedicatedServerModInitializer {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             LOGGER.info(text("Starting Expressions Provider...", NamedTextColor.GREEN));
             final FabricPlatform platform = new FabricPlatform(server);
-            final Path dataFolder = FabricLoader.getInstance().getConfigDir().resolve("Expressions-Expansion");
+            final Path dataFolder = FabricLoader.getInstance().getConfigDir().resolve("Expressions-Provider");
             try {
-                Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), platform);
+                Expressions.initialize(
+                        dataFolder,
+                        getClass().getClassLoader().getResourceAsStream(EXPRESSIONS_FILE),
+                        platform
+                );
                 LOGGER.info(text("Correctly started Expressions Provider", NamedTextColor.GREEN));
             } catch (IOException e) {
                 LOGGER.info(text("An error occurred while loading expressions", NamedTextColor.RED));

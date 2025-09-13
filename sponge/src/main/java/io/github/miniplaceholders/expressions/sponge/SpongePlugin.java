@@ -12,6 +12,8 @@ import org.spongepowered.plugin.builtin.jvm.Plugin;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import static io.github.miniplaceholders.expressions.common.Expressions.EXPRESSIONS_FILE;
+
 @Plugin("expressions-provider")
 public class SpongePlugin {
     @Inject
@@ -26,7 +28,11 @@ public class SpongePlugin {
         final Server server = event.engine();
 
         try {
-            Expressions.initialize(dataFolder, getClass().getClassLoader().getResourceAsStream("config.yml"), new SpongePlatform(server));
+            Expressions.initialize(
+                    dataFolder,
+                    getClass().getClassLoader().getResourceAsStream(EXPRESSIONS_FILE),
+                    new SpongePlatform(server)
+            );
             logger.info("Correctly started Expressions Provider");
         } catch (IOException e) {
             logger.info("An error occurred while loading expressions", e);

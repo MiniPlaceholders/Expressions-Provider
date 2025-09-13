@@ -4,10 +4,12 @@ import io.github.miniplaceholders.expressions.common.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 class TestMul {
     @BeforeEach
     public void init() {
-        Utils.registerPlaceholders(new Configuration());
+        Utils.registerPlaceholders(new Configuration(Map.of()));
     }
 
     @Test

@@ -12,12 +12,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.jetbrains.annotations.NotNull;
 
-public final class ExprUser implements Expression {
-    private final Configuration config;
-
-    public ExprUser(final Configuration config) {
-        this.config = config;
-    }
+public record ExprUser(Configuration config) implements Expression {
 
     @Override
     public void register(final Expansion.Builder builder) {
@@ -31,7 +26,7 @@ public final class ExprUser implements Expression {
         for (int i = 1; argumentQueue.hasNext(); i++) {
             resolverBuilder.resolver(Placeholder.parsed("arg" + i, Utils.parseToPlainText(context, argumentQueue.pop().value())));
         }
-        final String expression = config.getUserExpressions().get(expressionName);
+        final String expression = config.userExpressions().get(expressionName);
         return Tag.inserting(context.deserialize(expression, resolverBuilder.build()));
     }
 }
