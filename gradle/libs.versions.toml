@@ -1,10 +1,10 @@
 [versions]
 adventure = "4.24.0"
-junit = "5.10.2"
+junit = "5.13.4"
 blossom = "2.1.0"
 shadow = "9.1.0"
-fabric-loader = "0.15.6"
-fabric-api = "0.133.4+1.21.8"
+fabric-loader = "0.17.2"
+fabric-api = "0.133.10+1.21.9"
 minecraft = "1.21.8"
 adventurefabric = "6.6.0"
 
@@ -73,6 +73,6 @@ minimessage = ["adventure-minimessage", "adventure-serializer-plain"]
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
-runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
+runpaper = { id = "xyz.jpenilla.run-paper", version = "3.0.0" }
 blossom = { id = "net.kyori.blossom", version.ref = "blossom" }
 idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version = "1.3" }
