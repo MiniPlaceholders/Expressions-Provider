@@ -72,7 +72,7 @@ So, `<expr_user:add_and_multiply:2:3:4>` evaluates to `<expr_add:2:'<expr_mul:3:
 - `<expr_user:pad_integer:n:length>` - pad an integer with zeros (`12`, `3` -> `012`), EPL: `pad_integer=<expr_format:"<expr_concat:'%0':'<arg1>':'d'>":"<arg2>">`
 
 ## Nesting
-Expressions can be nested. Try `/miniplaceholders parse me <expr_add:1:"<expr_add:1:'<expr_add:1:"<expr_add:1:'<expr_add:1:0>'>">'>">`
+Expressions can be nested. Try `/miniplaceholders parse me <expr_add:1:"¸\<expr_add:1:'<expr_add:1:"<expr_add:1:'<expr_add:1:0>'>">'>">`
 
 ## Downloads
 [![](https://raw.githubusercontent.com/Prospector/badges/master/modrinth-badge-72h-padded.png)](https://modrinth.com/plugin/expressions-expansion)
