@@ -2,7 +2,7 @@
 adventure = "4.24.0"
 junit = "5.13.4"
 blossom = "2.1.0"
-shadow = "9.1.0"
+shadow = "9.2.2"
 fabric-loader = "0.17.2"
 fabric-api = "0.133.12+1.21.9"
 minecraft = "1.21.8"
