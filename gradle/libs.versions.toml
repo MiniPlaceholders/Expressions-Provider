@@ -1,5 +1,5 @@
 [versions]
-adventure = "4.24.0"
+adventure = "4.25.0"
 junit = "6.0.0"
 blossom = "2.1.0"
 shadow = "9.2.2"
