@@ -33,6 +33,6 @@ listOf(
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
-    id("fabric-loom") version "1.15.1"
+    id("fabric-loom") version "1.15.3"
     id("org.spongepowered.gradle.plugin") version "2.3.0"
 }
