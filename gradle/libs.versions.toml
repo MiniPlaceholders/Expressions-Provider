@@ -16,7 +16,7 @@ version = "3.1.0"
 [libraries.velocity-api]
 group = "com.velocitypowered"
 name = "velocity-api"
-version = "3.4.0-SNAPSHOT"
+version = "3.4.0"
 
 [libraries.paper-api]
 group = "io.papermc.paper"
